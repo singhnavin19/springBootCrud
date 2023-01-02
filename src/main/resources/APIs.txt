@@ -1,0 +1,70 @@
+Steps to run 
+
+----------MySql ------------------------------
+
+1. create datadbase bookstore;
+
+2. create tables
+
+	CREATE TABLE IF NOT EXISTS `book` (
+	  `id` int(11) NOT NULL AUTO_INCREMENT,
+	  `author` varchar(255) DEFAULT NULL,
+	  `category` varchar(255) DEFAULT NULL,
+	  `name` varchar(255) DEFAULT NULL,
+	  `pages` int(11) DEFAULT NULL,
+	  `price` int(11) DEFAULT NULL,
+	  `publication` varchar(255) DEFAULT NULL,
+	  PRIMARY KEY (`id`)
+	) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+3. insert records
+
+INSERT INTO `book` (`id`, `author`, `category`, `name`, `pages`, `price`, `publication`) VALUES
+(1, 'Santosh Kumar', 'Programming', 'Extensive Multithreading', 100, 50, 'Mcgraw Publication'),
+(3, 'Suchitra', 'Programming', 'Java', 1000, 200, 'Mcgraw Publication'),
+(5, 'Nitesh', 'Computer Programming', 'C++', 1500, 240, 'Rajput Publication');
+
+
+
+------------API to test
+
+1. to get all books 
+  
+  http://localhost:8080/bookservice/books
+
+8.To Create New Book use following url with POST Request
+
+  http://localhost:8080/bookservice/books
+
+	set request body as raw with JSON payload
+	  {
+	    "name": "C++",
+	    "author": "Nitesh",
+	    "publication": "Rajput Publication",
+	    "category": "Computer Programming",
+	    "pages": 1500,
+	    "price": 240
+	  }
+
+9.To get a particular book, use following url with GET request type in postman
+  http://localhost:8080/bookservice/books/<id>
+
+10.To update Book in database, use following url with PUT request type in postman
+	http://localhost:8080/bookservice/books/<id>
+set content type as in header as application/json
+set request body as raw with JSON payload
+ {
+    "name": "C++",
+    "author": "Nitesh",
+    "publication": "Rajput Publication",
+    "category": "Computer Programming",
+    "pages": 1500,
+    "price": 240
+  }
+
+  
+11.To delete a particular Book from database, use following url with DELETE request type in postman
+  http://localhost:8080/bookservice/books/<id>
+ 
+  
+  
